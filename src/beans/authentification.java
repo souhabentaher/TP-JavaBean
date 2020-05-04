@@ -1,35 +1,33 @@
 package beans;
 
-public class authentification {
+public class Authentification {
+
 	private String login;
-	private String  password;
+	private String password;
 	
-	public authentification(){
-     login=" "	;
-     password=" ";
-}
-	public void setlogin(String l){
-		login=l;
+	public Authentification(){
+		setLogin("");
+		setPassword("");
 	}
-	public String getlogin(){
+	
+	public boolean Valide(){
+		boolean validation=false;
+		if ((getLogin().equals("USER1"))&&(getPassword().equals("PASS1"))){
+			validation=true;
+		}
+		return validation;
+	}
+	
+	public String getLogin() {
 		return login;
 	}
-	public void setpwd(String p){
-		password=p;
+	public void setLogin(String login) {
+		this.login = login;
 	}
-	public String getpwd(){
+	public String getPassword() {
 		return password;
 	}
-public boolean valide(){
-	if ((login.equals("user1")) && (password.equals("pass1"))){
-		return true;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-		else {
-			return false;
-
-		}
-	}
-	
 }
-
-

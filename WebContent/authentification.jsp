@@ -1,28 +1,48 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<jsp:useBean id="authentificationUtilisateur" 
+class="beans.Authentification" scope="page"></jsp:useBean>
+<%! String titre ="Tentative d'authentification"; %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<style>
+div {
+ width: 300px;
+  border: 15px solid black;
+  padding: 50px;
+  margin: 20px;
+}
+</style>
+<title><%= titre %></title>
 </head>
-<body>
-<jsp:useBean id="nomBean"  class="beans.authentification" scope="session"></jsp:useBean>
+<body bgcolor="#COCOCO">
+<CENTER>
+<div>
+<h3><u><%= titre %></u></h3>
+<%
+String loginSaisi ="USER1";
+String motDePasseSaisi="PASS1";
+%>
+<jsp:setProperty property="login" name="authentificationUtilisateur" 
+value="<%=loginSaisi %>"/>
+<jsp:setProperty property="password" name="authentificationUtilisateur" 
+value="<%=motDePasseSaisi %>"/>
 
-<%nomBean.setlogin("log");
- nomBean.setpwd("pwd");%>
- 
-<%= nomBean.getlogin()%>
-<%= nomBean.getpwd()%>
-
-
-<% if (nomBean.valide()){%>
-<font color="green">authentifacation reussite</font>
-<%} else {%> 
-<font color="red">authentifacation echoué </font>
-<%} %>
-
-
-
+<b>Vous avez saisi les informations suivantes:</b><p>
+Nom d'utilisateur: <jsp:getProperty property="login" name="authentificationUtilisateur"/><br>
+Mot de passe: <jsp:getProperty property="password" name="authentificationUtilisateur"/><br>
+<p>
+<%
+boolean valide=authentificationUtilisateur.Valide();
+if (valide){
+%>
+<font color="green"><b>Ces paramètres sont correctes.</b></font>
+<% 	
+}else {
+%>
+<font color="red"><b>Cette authentification est invalide.</b></font>
+<% 	
+}
+%>
+</div>
+</CENTER>
 </body>
 </html>

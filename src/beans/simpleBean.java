@@ -1,18 +1,17 @@
 package beans;
 
-public class simpleBean {
-	
+public class SimpleBean {
 	private int compteur;
-	public simpleBean(){
+	public SimpleBean() {
 		setCompteur(0);
 	}
-	public void setCompteur(int c){
-		compteur=c;
-	}
-	public int getCompteur(){
-		return compteur;
-	}
-	public void increment(){
-		compteur++;
-	}
+   public void setCompteur(int theValue){
+	   compteur = theValue;
+   }
+   public int getCompteur(){
+	   return compteur;
+   }
+   public void increment(){
+	   compteur++;
+   }
 }
